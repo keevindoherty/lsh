@@ -33,3 +33,12 @@ if __name__ == '__main__':
                 print'\tdup : [%d] %s' % (dup, docs[dup])
         else:
             print 'no dups found for doc [%d] : %s' % (i, docs[i])
+
+    cache.save('test.pkl')
+
+    # Make a new cache to try loading from file
+    new_cache = LSHCache()
+
+    new_cache.from_file('test.pkl')
+    print new_cache.num_docs()
+    print new_cache._cache == cache._cache

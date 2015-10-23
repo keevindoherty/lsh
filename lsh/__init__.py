@@ -4,6 +4,7 @@ import random
 import sys
 import time
 import logging
+import cPickle as pickle
 
 logging.getLogger().setLevel(logging.INFO)
 
@@ -178,4 +179,13 @@ class LSHCache:
 
     def num_shingles(self):
         return self._counter
+
+    def save(self, filename='lshcache.pkl'):
+        with open(filename, 'wb') as f:
+            pickle.dump(self.__dict__, f)
+
+    def from_file(self, filename):
+        with open(filename, 'rb') as f:
+            class_vars = pickle.load(f)
+        self.__dict__.update(class_vars)
 
