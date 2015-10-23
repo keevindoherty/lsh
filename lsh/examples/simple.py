@@ -42,3 +42,4 @@ if __name__ == '__main__':
     new_cache.from_file('test.pkl')
     print new_cache.num_docs()
     print new_cache._cache == cache._cache
+    
