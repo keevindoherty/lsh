@@ -130,13 +130,13 @@ class LSHCache:
     def prepare_dup_buckets(cls, buckets, id=None):
         # logging.debug('buckets: %s', buckets)
         all = list(set(reduce(list.__add__, buckets, [])))
-        if id:
+        if id != None:
             all.remove(id)
         return all
 
     # public methods
 
-    def get_dup_buckets(self, doc):
+    def get_dup_buckets(self, doc, id):
         """
         Returns a list of buckets (which are themselves lists) that contain the ids
         of any matching documents.  If the cache was built in chronological order
